@@ -1,6 +1,6 @@
 # TYCHE - Graphic Streetwear Platform
 
-High-performance ecommerce platform for **TYCHE** — "Your Pinterest feed, for sale." Modeled on the minimalist structure of [theartofclo.com](https://theartofclo.com) and the scroll-driven motion feel of [pathos-landing-tau.vercel.app](https://pathos-landing-tau.vercel.app).
+
 
 ---
 
