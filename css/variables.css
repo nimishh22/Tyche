@@ -1,0 +1,64 @@
+/* ==========================================================================
+   TYCHE DESIGN SYSTEM TOKENS
+   Color palette: Deep charcoal/stone, bone, oxidized red-brown, muted bronze.
+   Strict geometry: Minimal sharp corners (0px/2px) + 40px pill variants.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Text:ital@0;1&family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+:root {
+  /* Surface Colors */
+  --bg-primary: #141311;
+  --bg-secondary: #1c1a17;
+  --bg-surface: #23201c;
+  --bg-surface-elevated: #2c2823;
+  --bg-overlay: rgba(20, 19, 17, 0.88);
+
+  /* Typography Colors */
+  --text-primary: #e9e3d5;    /* Off-white bone */
+  --text-secondary: #b8b0a0;  /* Dim bone-grey */
+  --text-muted: #7d7669;      /* Subdued label grey */
+  --text-inverse: #141311;    /* Inverted charcoal */
+
+  /* Accents */
+  --accent-rust: #8a3324;     /* Oxidized red-brown for CTAs/highlights */
+  --accent-rust-hover: #9e3d2c;
+  --accent-rust-active: #732b1e;
+  --accent-bronze: #a3894f;   /* Muted bronze/gold for smaller accents/labels */
+  --accent-bronze-light: #c2aa73;
+  --accent-green: #4ade80;
+
+  /* Borders & Dividers */
+  --border-hairline: #3a352c;  /* Dark warm grey hairline border */
+  --border-subtle: #29251f;
+  --border-active: #a3894f;
+
+  /* Geometry & Corner Radius */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --variant-pills-radius: 40px;
+  --variant-pills-border-width: 1px;
+
+  /* Typography Stacks */
+  --font-serif-title: "DM Serif Text", "Crimson Text", Georgia, serif;
+  --font-editorial: "Crimson Text", "DM Serif Text", Georgia, serif;
+  --font-display: 'Barlow Condensed', 'Syne', -apple-system, sans-serif;
+  --font-heading: 'Syne', 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Sizing & Spacing */
+  --max-width: 1440px;
+  --header-height: 72px;
+  --announcement-height: 36px;
+  --container-padding: clamp(1.25rem, 4vw, 3.5rem);
+
+  /* Motion Timing & Curves */
+  --transition-fast: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 700ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Elevation Shadows */
+  --shadow-drawer: -12px 0 40px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.85);
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+}

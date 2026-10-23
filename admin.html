@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tyche Mission Control</title>
+  <meta name="description" content="Tyche Streetwear — Private Admin Dashboard. Manage orders, inventory, analytics and products." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Design Tokens & Admin Styles -->
+  <link rel="stylesheet" href="css/variables.css?v=3" />
+  <link rel="stylesheet" href="css/admin.css?v=3" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body class="admin-body">
+
+  <!-- ════════════════════════════════════════════════════
+       TOP BAR
+  ════════════════════════════════════════════════════ -->
+  <header class="admin-topbar" id="admin-topbar">
+    <div class="topbar-left">
+      <!-- Mobile menu toggle -->
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <!-- Breadcrumb -->
+      <nav class="topbar-breadcrumb" id="topbar-breadcrumb" aria-label="Breadcrumb">
+        <span class="breadcrumb-store">Tyche</span>
+        <svg class="breadcrumb-sep" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span class="breadcrumb-page" id="breadcrumb-page">Home</span>
+      </nav>
+    </div>
+    <div class="topbar-center">
+      <!-- Global Search -->
+      <div class="topbar-search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="search" id="admin-global-search" class="topbar-search" placeholder="Search orders, products, customers…" autocomplete="off" />
+        <kbd class="search-kbd">⌘K</kbd>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <!-- Live Visitors -->
+      <div class="topbar-live-badge" title="Visitors on your store right now">
+        <span class="live-dot"></span>
+        <span id="live-visitor-count">—</span>
+        <span class="live-label">live</span>
+      </div>
+      <!-- Notification Bell -->
+      <button class="topbar-icon-btn" id="notif-bell-btn" aria-label="Notifications" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="topbar-badge" id="notif-count">2</span>
+      </button>
+      <!-- Avatar -->
+      <div class="topbar-avatar" title="Admin account">T</div>
+      <!-- Store link -->
+      <a href="index.html" target="_blank" class="topbar-store-link" title="View storefront">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        <span>Store</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════
+       LAYOUT SHELL
+  ════════════════════════════════════════════════════ -->
+  <div class="admin-layout" id="admin-layout">
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         SIDEBAR
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <!-- Brand -->
+      <div class="sidebar-brand">
+        <div class="sidebar-logo">
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+            <polygon points="16,2 30,8 30,24 16,30 2,24 2,8" fill="none" stroke="var(--accent-gold)" stroke-width="2.5"/>
+            <polygon points="16,8 24,12 24,20 16,24 8,20 8,12" fill="var(--accent-gold)" opacity="0.25"/>
+          </svg>
+          <span class="sidebar-brand-name">TYCHE</span>
+        </div>
+        <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Collapse sidebar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Primary Nav -->
+      <nav class="sidebar-nav" aria-label="Dashboard navigation">
+
+        <div class="nav-section">
+          <button class="nav-item active" data-tab="home" aria-current="page">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-label">Home</span>
+          </button>
+
+          <button class="nav-item" data-tab="analytics">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+            <span class="nav-label">Analytics</span>
+          </button>
+
+          <button class="nav-item" data-tab="marketing">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span class="nav-label">Marketing</span>
+          </button>
+        </div>
+
+        <div class="nav-section-label">Store</div>
+        <div class="nav-section">
+          <button class="nav-item" data-tab="orders">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="nav-label">Orders</span>
+            <span class="nav-badge" id="sidebar-orders-badge">0</span>
+          </button>
+
+          <button class="nav-item" data-tab="products">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span class="nav-label">Products</span>
+          </button>
+
+          <button class="nav-item" data-tab="inventory">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <span class="nav-label">Inventory</span>
+          </button>
+
+          <button class="nav-item" data-tab="customers">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="nav-label">Customers</span>
+          </button>
+
+          <button class="nav-item" data-tab="discounts">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            <span class="nav-label">Discounts</span>
+          </button>
+        </div>
+
+        <div class="nav-section-label">Channels</div>
+        <div class="nav-section">
+          <button class="nav-item" data-tab="online-store">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span class="nav-label">Online Store</span>
+          </button>
+
+          <button class="nav-item" data-tab="social">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <span class="nav-label">Social &amp; Instagram</span>
+          </button>
+        </div>
+
+        <div class="nav-section-label">Settings</div>
+        <div class="nav-section">
+          <button class="nav-item" data-tab="settings">
+            <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span class="nav-label">Settings</span>
+          </button>
+        </div>
+
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-plan-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--accent-gold)" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Tyche Starter Plan</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         MAIN CONTENT AREA
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <main class="admin-main" id="admin-main">
+
+      <!-- ─────────────────────────────────────────────────
+           HOME / OVERVIEW TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view active" id="view-home">
+        <!-- Injected by TycheAdmin.renderHomeView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           ANALYTICS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-analytics">
+        <!-- Injected by TycheAdmin.renderAnalyticsView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           MARKETING TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-marketing">
+        <!-- Injected by TycheAdmin.renderMarketingView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           ORDERS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-orders">
+        <!-- Injected by TycheAdmin.renderOrdersView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           PRODUCTS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-products">
+        <!-- Injected by TycheAdmin.renderProductsView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           INVENTORY TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-inventory">
+        <!-- Injected by TycheAdmin.renderInventoryView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           CUSTOMERS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-customers">
+        <!-- Injected by TycheAdmin.renderCustomersView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           DISCOUNTS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-discounts">
+        <!-- Injected by TycheAdmin.renderDiscountsView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           ONLINE STORE TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-online-store">
+        <!-- Injected by TycheAdmin.renderOnlineStoreView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           SOCIAL / INSTAGRAM TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-social">
+        <!-- Injected by TycheAdmin.renderSocialView() -->
+      </div>
+
+      <!-- ─────────────────────────────────────────────────
+           SETTINGS TAB
+      ───────────────────────────────────────────────── -->
+      <div class="tab-view" id="view-settings">
+        <!-- Injected by TycheAdmin.renderSettingsView() -->
+      </div>
+
+    </main>
+  </div><!-- /.admin-layout -->
+
+  <!-- ════════════════════════════════════════════════════
+       ORDER DETAIL DRAWER (Slide-in panel)
+  ════════════════════════════════════════════════════ -->
+  <div class="order-drawer-overlay" id="order-drawer-overlay"></div>
+  <aside class="order-drawer" id="order-drawer" role="dialog" aria-modal="true" aria-label="Order details">
+    <div class="drawer-header">
+      <h2 class="drawer-title" id="drawer-order-id">Order #—</h2>
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close order details">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="drawer-body">
+      <!-- Injected by TycheAdmin.openOrderDrawer() -->
+    </div>
+  </aside>
+
+  <!-- ════════════════════════════════════════════════════
+       ADD PRODUCT MODAL
+  ════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="add-product-modal-overlay" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="add-product-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="add-product-title">Add New Product</h2>
+        <button class="modal-close-btn" id="add-product-close-btn" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="add-product-modal-body">
+        <form id="add-product-form" class="admin-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="prod-id">Product ID <span class="req">*</span></label>
+              <input type="text" id="prod-id" name="id" class="form-control" placeholder="th-tee-04" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prod-category">Category</label>
+              <select id="prod-category" name="category" class="form-control">
+                <option value="tees">Tees</option>
+                <option value="hoodies">Hoodies</option>
+                <option value="bottoms">Bottoms</option>
+                <option value="accessories">Accessories</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-name">Product Name <span class="req">*</span></label>
+            <input type="text" id="prod-name" name="name" class="form-control" placeholder="Shadow Archive Tee" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-desc">Description</label>
+            <textarea id="prod-desc" name="description" class="form-control" rows="3" placeholder="Short product description…"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="prod-price-inr">Base Price (INR ₹) <span class="req">*</span></label>
+              <input type="number" id="prod-price-inr" name="priceINR" class="form-control" placeholder="1299" min="0" step="1" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="prod-badge">Badge Label</label>
+              <input type="text" id="prod-badge" name="badge" class="form-control" placeholder="New Drop" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Initial Stock per Size</label>
+            <div class="size-stock-grid">
+              <div class="size-stock-cell">
+                <span class="size-tag">XS</span>
+                <input type="number" name="stock_XS" class="form-control size-input" value="0" min="0" />
+              </div>
+              <div class="size-stock-cell">
+                <span class="size-tag">S</span>
+                <input type="number" name="stock_S" class="form-control size-input" value="0" min="0" />
+              </div>
+              <div class="size-stock-cell">
+                <span class="size-tag">M</span>
+                <input type="number" name="stock_M" class="form-control size-input" value="0" min="0" />
+              </div>
+              <div class="size-stock-cell">
+                <span class="size-tag">L</span>
+                <input type="number" name="stock_L" class="form-control size-input" value="0" min="0" />
+              </div>
+              <div class="size-stock-cell">
+                <span class="size-tag">XL</span>
+                <input type="number" name="stock_XL" class="form-control size-input" value="0" min="0" />
+              </div>
+              <div class="size-stock-cell">
+                <span class="size-tag">2XL</span>
+                <input type="number" name="stock_2XL" class="form-control size-input" value="0" min="0" />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="prod-tags">Tags <span class="hint">(comma-separated)</span></label>
+            <input type="text" id="prod-tags" name="tags" class="form-control" placeholder="drop-1, essentials, unisex" />
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="add-product-cancel-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       CREATE DISCOUNT MODAL
+  ════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="create-discount-modal-overlay" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="create-discount-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="create-discount-title">Create Discount Code</h2>
+        <button class="modal-close-btn" id="create-discount-close-btn" aria-label="Close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="create-discount-form" class="admin-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="disc-code">Discount Code <span class="req">*</span></label>
+              <div class="input-group">
+                <input type="text" id="disc-code" name="code" class="form-control" placeholder="SUMMER25" style="text-transform:uppercase" required />
+                <button type="button" class="input-addon-btn" id="gen-code-btn">Generate</button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="disc-type">Discount Type</label>
+              <select id="disc-type" name="type" class="form-control">
+                <option value="percentage">Percentage off (%)</option>
+                <option value="fixed">Fixed amount (₹ / $)</option>
+                <option value="shipping">Free shipping</option>
+                <option value="bxgy">Buy X Get Y</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="disc-value">Value <span class="req">*</span></label>
+              <input type="number" id="disc-value" name="value" class="form-control" placeholder="10" min="0" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="disc-min-order">Minimum Order (₹)</label>
+              <input type="number" id="disc-min-order" name="minOrder" class="form-control" placeholder="0" min="0" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="disc-uses">Usage Limit</label>
+              <input type="number" id="disc-uses" name="usageLimit" class="form-control" placeholder="Unlimited" min="0" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="disc-expiry">Expiry Date</label>
+              <input type="date" id="disc-expiry" name="expiry" class="form-control" />
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="create-discount-cancel-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create Code</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════
+       SIDEBAR MOBILE OVERLAY
+  ════════════════════════════════════════════════════ -->
+  <div class="sidebar-mobile-overlay" id="sidebar-mobile-overlay"></div>
+
+  <!-- ════════════════════════════════════════════════════
+       TOAST NOTIFICATION CONTAINER
+  ════════════════════════════════════════════════════ -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- ════════════════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════════════ -->
+  <!-- Product catalog (needed for inventory/product views) -->
+  <script src="js/products.js?v=3"></script>
+  <!-- Store engine (currency/pricing helpers) -->
+  <script src="js/store.js?v=3"></script>
+  <!-- Admin dashboard controller -->
+  <script src="js/admin.js?v=3"></script>
+
+  <!-- ── Misc Admin UI Wiring ── -->
+  <script>
+    (function () {
+      'use strict';
+
+      // ── Sidebar collapse toggle ─────────────────────────────────────
+      const sidebar = document.getElementById('admin-sidebar');
+      const layout   = document.getElementById('admin-layout');
+      const collapseBtn = document.getElementById('sidebar-collapse-btn');
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileOverlay = document.getElementById('sidebar-mobile-overlay');
+
+      collapseBtn && collapseBtn.addEventListener('click', () => {
+        layout.classList.toggle('sidebar-collapsed');
+      });
+
+      mobileToggle && mobileToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-open');
+        mobileOverlay.classList.toggle('visible');
+      });
+
+      mobileOverlay && mobileOverlay.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        mobileOverlay.classList.remove('visible');
+      });
+
+      // ── Order Drawer close ──────────────────────────────────────────
+      const drawerOverlay = document.getElementById('order-drawer-overlay');
+      const drawerCloseBtn = document.getElementById('drawer-close-btn');
+      [drawerOverlay, drawerCloseBtn].forEach(el => el && el.addEventListener('click', () => {
+        document.getElementById('order-drawer').classList.remove('open');
+        drawerOverlay.classList.remove('visible');
+      }));
+
+      // ── Add Product Modal ───────────────────────────────────────────
+      const addProductModalOverlay = document.getElementById('add-product-modal-overlay');
+      const addProductCloseBtn = document.getElementById('add-product-close-btn');
+      const addProductCancelBtn = document.getElementById('add-product-cancel-btn');
+      [addProductCloseBtn, addProductCancelBtn].forEach(el => el && el.addEventListener('click', () => {
+        addProductModalOverlay.hidden = true;
+      }));
+
+      // ── Create Discount Modal ───────────────────────────────────────
+      const createDiscountModalOverlay = document.getElementById('create-discount-modal-overlay');
+      const createDiscountCloseBtn = document.getElementById('create-discount-close-btn');
+      const createDiscountCancelBtn = document.getElementById('create-discount-cancel-btn');
+      [createDiscountCloseBtn, createDiscountCancelBtn].forEach(el => el && el.addEventListener('click', () => {
+        createDiscountModalOverlay.hidden = true;
+      }));
+
+      // Close modals on overlay click
+      [addProductModalOverlay, createDiscountModalOverlay].forEach(overlay => {
+        overlay && overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) overlay.hidden = true;
+        });
+      });
+
+      // ── Generate Random Discount Code ───────────────────────────────
+      const genCodeBtn = document.getElementById('gen-code-btn');
+      genCodeBtn && genCodeBtn.addEventListener('click', () => {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = 'TYCHE';
+        for (let i = 0; i < 4; i++) code += chars[Math.floor(Math.random() * chars.length)];
+        document.getElementById('disc-code').value = code;
+      });
+
+      // ── Keyboard shortcuts ──────────────────────────────────────────
+      document.addEventListener('keydown', (e) => {
+        // ⌘K / Ctrl+K → focus search
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          document.getElementById('admin-global-search')?.focus();
+        }
+        // Esc → close open panels
+        if (e.key === 'Escape') {
+          document.getElementById('order-drawer')?.classList.remove('open');
+          document.getElementById('order-drawer-overlay')?.classList.remove('visible');
+          if (addProductModalOverlay) addProductModalOverlay.hidden = true;
+          if (createDiscountModalOverlay) createDiscountModalOverlay.hidden = true;
+        }
+      });
+
+      // ── Update breadcrumb on tab switch ────────────────────────────
+      const BREADCRUMBS = {
+        home: 'Home',
+        analytics: 'Analytics',
+        marketing: 'Marketing',
+        orders: 'Orders',
+        products: 'Products',
+        inventory: 'Inventory',
+        customers: 'Customers',
+        discounts: 'Discounts',
+        'online-store': 'Online Store',
+        social: 'Social & Instagram',
+        settings: 'Settings',
+      };
+
+      document.querySelectorAll('.nav-item[data-tab]').forEach(item => {
+        item.addEventListener('click', () => {
+          const tab = item.getAttribute('data-tab');
+          const el = document.getElementById('breadcrumb-page');
+          if (el) el.textContent = BREADCRUMBS[tab] || tab;
+          // close mobile sidebar
+          sidebar.classList.remove('mobile-open');
+          mobileOverlay.classList.remove('visible');
+        });
+      });
+
+      // ── Global search placeholder (functional wiring via admin.js) ──
+      const searchInput = document.getElementById('admin-global-search');
+      searchInput && searchInput.addEventListener('input', (e) => {
+        // Delegate to admin controller if exposed
+        if (window.TycheAdminController && window.TycheAdminController.handleSearch) {
+          window.TycheAdminController.handleSearch(e.target.value);
+        }
+      });
+
+      // ── Expose modal open functions for admin.js to call ────────────
+      window.openAddProductModal = () => { addProductModalOverlay.hidden = false; };
+      window.openCreateDiscountModal = () => { createDiscountModalOverlay.hidden = false; };
+
+    })();
+  </script>
+</body>
+</html>

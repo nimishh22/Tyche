@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TYCHE | Your Pinterest Feed. For Sale.</title>
+  <meta name="description" content="TYCHE — Graphic streetwear for the images, ideas and references worth wearing. Heavyweight graphic tees crafted in India.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css?v=4.2">
+  <link rel="stylesheet" href="css/base.css?v=4.2">
+  <link rel="stylesheet" href="css/components.css?v=4.2">
+  <link rel="stylesheet" href="css/animations.css?v=4.2">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Announcement Bar
+       ========================================================================= -->
+  <div class="announcement-bar" role="region" aria-label="Announcement">
+    <div class="announcement-content">
+      <span>WORLDWIDE SHIPPING</span>
+      <span class="announcement-dot"></span>
+      <span id="announcement-shipping-msg">FREE SHIPPING OVER ₹2,500</span>
+      <span class="announcement-dot"></span>
+      <span>DROP 01 LIVE NOW</span>
+      <span class="announcement-dot"></span>
+      <span>SAVED IT. NOW WEAR IT.</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. Sticky Header
+       ========================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="header-container">
+      
+      <!-- Logo: Wordmark + Decorative Greek Lettering -->
+      <a href="index.html" class="brand-logo" aria-label="Tyche Clothing Home">
+        <span class="logo-wordmark">TYCHE</span>
+        <span class="logo-greek">ΤΥΧΗ</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <a href="#collection-section" class="nav-link active" data-nav-category="all" onclick="UI.setCategory('all')">Drop 01</a>
+        <a href="#collection-section" class="nav-link" data-nav-category="t-shirts" onclick="UI.setCategory('t-shirts')">Graphic Tees</a>
+        <a href="javascript:void(0)" class="nav-link" onclick="UI.openContact()">Contact</a>
+      </nav>
+
+      <!-- Header Actions: Region Selector, Search & Cart -->
+      <div class="header-actions">
+        <!-- Country / Currency Selector -->
+        <div class="region-select-wrap">
+          <select id="region-selector" class="region-select" onchange="UI.setRegion(this.value)" aria-label="Select Country and Currency">
+            <option value="IN">🇮🇳 INR (₹)</option>
+            <option value="US">🇺🇸 USD ($)</option>
+            <option value="UK">🇬🇧 GBP (£)</option>
+            <option value="EU">🇪🇺 EUR (€)</option>
+            <option value="CA">🇨🇦 CAD ($)</option>
+            <option value="AU">🇦🇺 AUD ($)</option>
+            <option value="AE">🇦🇪 AED (د.إ)</option>
+            <option value="SG">🇸🇬 SGD ($)</option>
+            <option value="CN">🇨🇳 CNY (¥)</option>
+          </select>
+        </div>
+
+        <!-- Live Search Trigger -->
+        <button id="search-trigger-btn" class="icon-btn" onclick="UI.openSearch()" aria-label="Open search overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Cart Drawer Trigger -->
+        <button id="cart-trigger-btn" class="icon-btn" onclick="UI.openCart()" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span id="cart-nav-count" class="cart-badge">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. Hero Section
+       ========================================================================= -->
+  <section class="hero-section" aria-label="Hero Showcase">
+    <div class="hero-bg-wrapper">
+      <img class="hero-bg-image" src="assets/images/hero.jpg" alt="Tyche Streetwear Editorial" fetchpriority="high">
+      <div class="hero-gradient-overlay"></div>
+    </div>
+
+    <div class="site-container hero-content">
+      <div data-reveal="pop-in">
+        <span class="eyebrow">DROP 01 / GRAPHIC STREETWEAR</span>
+        <h1 class="hero-headline">YOUR PINTEREST FEED.<br>FOR SALE.</h1>
+      </div>
+
+      <p class="hero-subheading" style="font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--text-secondary); max-width: 580px; margin-bottom: 1.5rem; line-height: 1.5;" data-reveal="fade-up">
+        Graphic streetwear for the images, ideas and references worth wearing.
+      </p>
+
+      <div class="hero-specs-strip" data-reveal="fade-up">
+        <div class="hero-spec-item">
+          <span>EDITION:</span>
+          <span class="spec-val">Drop 01</span>
+        </div>
+        <div class="hero-spec-item">
+          <span>FABRIC:</span>
+          <span class="spec-val">Heavyweight Cotton Jersey</span>
+        </div>
+        <div class="hero-spec-item">
+          <span>ORIGIN:</span>
+          <span class="spec-val">Crafted in India</span>
+        </div>
+      </div>
+
+      <div class="hero-ctas" data-reveal="fade-up">
+        <a href="#collection-section" class="btn-primary pulse-cta" onclick="UI.setCategory('all')">
+          SHOP DROP 01
+        </a>
+        <a href="#collection-section" class="btn-secondary" onclick="UI.setCategory('all')">
+          VIEW COLLECTION
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. Curated Drop Highlights
+       ========================================================================= -->
+  <section class="section-wrapper" aria-label="Curated Pieces">
+    <div class="site-container">
+      <div class="section-header" data-reveal="fade-up">
+        <div>
+          <span class="eyebrow">01 / CURATED DROP</span>
+          <h2 class="section-title">THINGS WORTH WEARING</h2>
+        </div>
+        <a href="#collection-section" class="section-action-link" onclick="UI.setCategory('all')">
+          View all tees
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="category-grid">
+        <!-- Tile 1: Frank Ocean Blond -->
+        <a href="javascript:void(0)" class="category-tile" onclick="UI.openProductModal('th-tee-01')" data-reveal="pop-in">
+          <img class="category-tile-img" src="assets/images/prod_blondtee_model_front.jpg" alt="Frank Ocean Blond Tee" loading="lazy">
+          <div class="category-tile-overlay">
+            <span class="category-tile-num">01 / GRAPHIC</span>
+            <div class="category-tile-title">
+              <span>BLOND TEE</span>
+              <span class="category-tile-arrow">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.35rem;">
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">You saved it. We printed it. 300 GSM combed cotton.</p>
+              <span class="category-tile-price" data-product-price="th-tee-01" style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-left: 0.5rem; white-space: nowrap;">₹1,200</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tile 2: YVL Vamp -->
+        <a href="javascript:void(0)" class="category-tile" onclick="UI.openProductModal('th-tee-02')" data-reveal="pop-in">
+          <img class="category-tile-img" src="assets/images/prod_yvl_model_front_new.jpg" alt="YVL Vamp Graphic Tee" loading="lazy">
+          <div class="category-tile-overlay">
+            <span class="category-tile-num">02 / GRAPHIC</span>
+            <div class="category-tile-title">
+              <span>YVL VAMP</span>
+              <span class="category-tile-arrow">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.35rem;">
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">Chest emblem & oversized skeletal x-ray back print.</p>
+              <span class="category-tile-price" data-product-price="th-tee-02" style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-left: 0.5rem; white-space: nowrap;">₹1,299</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Tile 3: Messi -->
+        <a href="javascript:void(0)" class="category-tile" onclick="UI.openProductModal('th-tee-03')" data-reveal="pop-in">
+          <img class="category-tile-img" src="assets/images/prod_messi_model_back.jpg" alt="Messi Tee" loading="lazy">
+          <div class="category-tile-overlay">
+            <span class="category-tile-num">03 / GRAPHIC</span>
+            <div class="category-tile-title">
+              <span>MESSI TEE</span>
+              <span class="category-tile-arrow">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 0.35rem;">
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0;">Back graphic portrait tee — football elegance on vintage white cotton.</p>
+              <span class="category-tile-price" data-product-price="th-tee-03" style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-left: 0.5rem; white-space: nowrap;">₹1,200</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. Featured Graphics Carousel
+       ========================================================================= -->
+  <section id="featured-section" class="section-wrapper" style="padding-top: 0;" aria-label="Featured Pieces">
+    <div class="site-container">
+      <div class="section-header" data-reveal="fade-up">
+        <div>
+          <span class="eyebrow">02 / DROP 01 SELECTION</span>
+          <h2 class="section-title">FEATURED GRAPHICS</h2>
+        </div>
+        <div class="carousel-controls">
+          <button id="carousel-prev" class="carousel-nav-btn" aria-label="Previous graphics">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button id="carousel-next" class="carousel-nav-btn" aria-label="Next graphics">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Track -->
+      <div id="featured-carousel-track" class="product-carousel-track">
+        <!-- Dynamically injected cards with image hover-swap -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. Full-Width Lifestyle Image Break
+       ========================================================================= -->
+  <section class="lifestyle-break-section" aria-label="Brand Visual Break">
+    <img class="lifestyle-break-bg" src="assets/images/lifestyle_banner.jpg" alt="Tyche Campaign Lifestyle" loading="lazy">
+    <div class="lifestyle-break-overlay"></div>
+    <div class="lifestyle-break-content" data-reveal="pop-in">
+      <span class="eyebrow">TYCHE / DROP 01</span>
+      <h2 class="lifestyle-statement">MADE FOR THE SAVED FOLDER.</h2>
+      <p class="lifestyle-specs">
+        300 GSM COMBED COTTON • CRAFTED IN INDIA • SCREENPRINTED GRAPHICS
+      </p>
+      <a href="#collection-section" class="btn-primary" onclick="UI.setCategory('all')">
+        Shop Drop 01
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. Collection / Product Grid
+       ========================================================================= -->
+  <section id="collection-section" class="section-wrapper" aria-label="Complete Collection">
+    <div class="site-container">
+      <div class="section-header" data-reveal="fade-up">
+        <div>
+          <span class="eyebrow">03 / THE LINEUP</span>
+          <h2 class="section-title">DROP 01 TEES</h2>
+        </div>
+      </div>
+
+      <!-- Filter Tabs & Sort Controls -->
+      <div class="shop-filter-bar" data-reveal="fade-up">
+        <div class="filter-tabs" role="tablist">
+          <button class="filter-tab-btn active" data-category="all" onclick="UI.setCategory('all')" role="tab">All Tees</button>
+          <button class="filter-tab-btn" data-category="t-shirts" onclick="UI.setCategory('t-shirts')" role="tab">Graphic Tees</button>
+        </div>
+
+        <div class="sort-container">
+          <label for="sort-select" class="sort-label">Sort By:</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort garments by price or feature">
+            <option value="featured">Featured First</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Responsive Product Grid -->
+      <div id="collection-grid" class="collection-grid">
+        <!-- Rendered dynamically with hover-swap cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. Footer
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-container">
+      <div class="footer-top">
+        
+        <!-- Brand blurb -->
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo" aria-label="Tyche Clothing Home">
+            <span class="logo-wordmark">TYCHE</span>
+            <span class="logo-greek">ΤΥΧΗ</span>
+          </a>
+          <p class="footer-blurb">
+            Graphic streetwear for the images, ideas and references worth wearing. Crafted in India.
+          </p>
+          <div>
+            <button class="spec-badge" onclick="UI.openCustomDomainModal()" style="cursor: pointer; background: var(--bg-surface); border-color: var(--accent-bronze); color: var(--accent-bronze);">
+              Custom Domain & Launch Checklist
+            </button>
+          </div>
+        </div>
+
+        <!-- Shop Links -->
+        <div>
+          <h4 class="footer-col-title">SHOP</h4>
+          <ul class="footer-links">
+            <li><a href="#collection-section" class="footer-link" onclick="UI.setCategory('all')">Drop 01 Collection</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openProductModal('th-tee-01')">Frank Ocean Blond Tee</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openProductModal('th-tee-02')">YVL Vamp Tee</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openProductModal('th-tee-03')">Messi Tee</a></li>
+          </ul>
+        </div>
+
+        <!-- Help & Information -->
+        <div>
+          <h4 class="footer-col-title">SUPPORT</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openSizeGuide()">Size & Fit Guide</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openContact()">Contact & Help</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openContact()">Shipping & Dispatch</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openTermsConditions()">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal Links -->
+        <div>
+          <h4 class="footer-col-title">LEGAL</h4>
+          <ul class="footer-links">
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openPrivacyPolicy()">Privacy Policy</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openTermsConditions()">Terms & Conditions</a></li>
+            <li><a href="javascript:void(0)" class="footer-link" onclick="UI.openCustomDomainModal()">Domain Setup</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Drop Signup -->
+        <div>
+          <h4 class="footer-col-title">DROP ALERTS</h4>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            Get early access when new graphics drop. Zero spam.
+          </p>
+          <form id="newsletter-form" class="newsletter-form">
+            <div class="newsletter-input-group">
+              <input id="newsletter-email" type="email" required placeholder="Enter your email" class="newsletter-input" aria-label="Email address for drop access">
+              <button type="submit" class="newsletter-btn">Join</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar: Payment Badges & Copyright -->
+      <div class="footer-bottom">
+        <div class="payment-methods" aria-label="Accepted Payment Methods">
+          <span class="payment-badge">Visa</span>
+          <span class="payment-badge">Mastercard</span>
+          <span class="payment-badge">Amex</span>
+          <span class="payment-badge">Apple Pay</span>
+          <span class="payment-badge">Google Pay</span>
+        </div>
+        <p class="copyright-text">
+          &copy; 2026 TYCHE CLOTHING. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       MODALS & OVERLAYS
+       ========================================================================= -->
+
+  <!-- Live Search Overlay -->
+  <div id="search-overlay" class="search-overlay" role="dialog" aria-modal="true" aria-label="Product Search">
+    <div class="search-header">
+      <div class="search-input-wrapper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search-input" type="search" class="search-input" placeholder="Search tees, graphics, Blond, YVL..." aria-label="Search garments">
+      </div>
+      <button class="search-close-btn" onclick="UI.closeSearch()">Close [ESC]</button>
+    </div>
+
+    <div class="search-body">
+      <div class="search-tags-row">
+        <span style="font-size: 0.72rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.1em;">Quick Filters:</span>
+        <button class="search-tag-chip" onclick="document.getElementById('search-input').value='Blond'; UI.handleSearchInput('Blond')">Blond</button>
+        <button class="search-tag-chip" onclick="document.getElementById('search-input').value='YVL'; UI.handleSearchInput('YVL')">YVL Vamp</button>
+        <button class="search-tag-chip" onclick="document.getElementById('search-input').value='Messi'; UI.handleSearchInput('Messi')">Messi</button>
+        <button class="search-tag-chip" onclick="document.getElementById('search-input').value='300 GSM'; UI.handleSearchInput('300 GSM')">300 GSM</button>
+      </div>
+      <div id="search-results-grid" class="collection-grid">
+        <!-- Search Results Grid -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="modal-backdrop" onclick="if(event.target===this)UI.closeProductModal()" role="dialog" aria-modal="true" aria-label="Product Details">
+    <div id="product-modal-body"></div>
+  </div>
+
+  <!-- Generic / Legal Modal (Privacy Policy, Terms, Size Guide, Domain Setup) -->
+  <div id="generic-modal" class="modal-backdrop" onclick="if(event.target===this)UI.closeGenericModal()" role="dialog" aria-modal="true" aria-label="Information">
+    <div id="generic-modal-body"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Slide-in Cart Drawer -->
+  <div id="cart-drawer-backdrop" class="drawer-backdrop" onclick="if(event.target===this)UI.closeCart()">
+    <aside class="cart-drawer" role="dialog" aria-label="Shopping Bag">
+      
+      <div class="cart-header">
+        <h3 class="cart-title">
+          YOUR BAG <span id="cart-header-count" class="count">(0)</span>
+        </h3>
+        <button class="modal-close-btn" onclick="UI.closeCart()" style="position: static;" aria-label="Close bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Progress Meter -->
+      <div class="cart-shipping-meter">
+        <p id="cart-shipping-msg">Add $150.00 for free worldwide shipping</p>
+        <div class="shipping-progress-track">
+          <div id="cart-shipping-fill" class="shipping-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Line Items List -->
+      <div id="cart-items-list" class="cart-items-list">
+        <!-- Injected via UI.renderCartDrawer() -->
+      </div>
+
+      <!-- Cart Drawer Footer -->
+      <div class="cart-footer">
+        <div class="cart-subtotal-row">
+          <span class="cart-subtotal-label">Subtotal</span>
+          <span id="cart-subtotal-val" class="cart-subtotal-val">$0.00</span>
+        </div>
+        <p class="cart-notes">Taxes and worldwide express duties calculated during checkout.</p>
+        <button id="cart-checkout-btn" class="btn-primary" style="width: 100%; font-size: 1.2rem; padding: 1rem;" onclick="UI.openCheckout()">
+          Proceed to Checkout
+        </button>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- =========================================================================
+       9. Dedicated Checkout View Flow
+       ========================================================================= -->
+  <div id="checkout-view" class="checkout-view" role="main" aria-label="Secure Checkout">
+    <div class="checkout-navbar">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-wordmark">TYCHE</span>
+        <span class="logo-greek">ΤΥΧΗ</span>
+      </a>
+      <button class="checkout-back-btn" onclick="UI.closeCheckout()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Shopping
+      </button>
+    </div>
+
+    <div class="checkout-layout">
+      <!-- Checkout Form Column -->
+      <div id="checkout-form-container" class="checkout-form-col">
+        <span class="eyebrow">STEP 1 OF 2 / DISPATCH & PAYMENT</span>
+        <h2 style="font-size: 2.2rem; margin-bottom: 2rem; line-height: 1;">EXPRESS CHECKOUT</h2>
+
+        <form id="checkout-form" onsubmit="UI.processOrder(event)">
+          <!-- Customer Contact -->
+          <div class="checkout-section">
+            <h3 class="checkout-section-title">01. CONTACT DETAILS</h3>
+            <div class="form-grid">
+              <div class="form-group full">
+                <label class="form-label" for="chk-email">Email Address (For Order Tracking)</label>
+                <input id="chk-email" type="email" required class="form-input" placeholder="name@domain.com">
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="chk-phone">Mobile Phone (Carrier SMS Updates)</label>
+                <input id="chk-phone" type="tel" required class="form-input" placeholder="+1 (555) 000-0000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div class="checkout-section">
+            <h3 class="checkout-section-title">02. SHIPPING DESTINATION</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="chk-fname">First Name</label>
+                <input id="chk-fname" type="text" required class="form-input" placeholder="Alexander">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chk-lname">Last Name</label>
+                <input id="chk-lname" type="text" required class="form-input" placeholder="Vance">
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="chk-address">Street Address</label>
+                <input id="chk-address" type="text" required class="form-input" placeholder="742 Evergreen Terrace">
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="chk-suite">Apartment, Suite, Unit (Optional)</label>
+                <input id="chk-suite" type="text" class="form-input" placeholder="Unit 4B">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chk-city">City</label>
+                <input id="chk-city" type="text" required class="form-input" placeholder="Los Angeles">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="chk-pin">Postal / PIN Code</label>
+                <input id="chk-pin" type="text" required class="form-input" placeholder="90210">
+              </div>
+              <div class="form-group full">
+                <label class="form-label" for="chk-country">Country / Region</label>
+                <select id="chk-country" class="form-input" style="cursor: pointer;" onchange="UI.setRegion(this.value)">
+                  <option value="IN">India</option>
+                  <option value="US">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="EU">Europe (Germany / France / Netherlands)</option>
+                  <option value="CA">Canada</option>
+                  <option value="AU">Australia</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="SG">Singapore</option>
+                  <option value="CN">China</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment handled on Stripe Checkout (PCI-safe) -->
+          <div class="checkout-section">
+            <h3 class="checkout-section-title">03. SECURE PAYMENT</h3>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; margin: 0;">
+              You’ll complete payment on Stripe’s encrypted checkout — cards worldwide, with Apple Pay and Google Pay where available. We never store card details on this site.
+            </p>
+          </div>
+
+          <button id="place-order-btn" type="submit" class="btn-primary" style="width: 100%; font-size: 1.3rem; padding: 1.25rem;">
+            Continue to secure payment
+          </button>
+        </form>
+      </div>
+
+      <!-- Order Summary Column -->
+      <div class="checkout-summary-col">
+        <h3 class="checkout-section-title" style="margin-top: 0;">ORDER SUMMARY</h3>
+        <div id="checkout-items-list">
+          <!-- Injected items -->
+        </div>
+
+        <div style="border-top: 1px solid var(--border-hairline); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+            <span>Items Subtotal</span>
+            <span id="checkout-subtotal" style="color: var(--text-primary); font-weight: 600;">$0.00</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-secondary);">
+            <span>Tracked Express Shipping</span>
+            <span id="checkout-shipping" style="color: var(--accent-bronze); font-weight: 600;">FREE</span>
+          </div>
+          <div style="border-top: 1px solid var(--border-hairline); padding-top: 1rem; display: flex; justify-content: space-between; align-items: baseline;">
+            <span style="font-size: 1rem; font-weight: 700; text-transform: uppercase;">Total Due</span>
+            <span id="checkout-total" style="font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--text-primary);">$0.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/products.js?v=4.3"></script>
+  <script src="js/store.js?v=4.2"></script>
+  <script src="js/motion.js?v=4.2"></script>
+  <script src="js/components.js?v=4.3"></script>
+  <script src="js/app.js?v=4.3"></script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* ==========================================================================
+   TYCHE BASE STYLES & RESET
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Minimal Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hairline);
+  border-radius: var(--radius-none);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-bronze);
+}
+
+/* Base Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent-bronze);
+  outline-offset: 2px;
+}
+
+/* Eyebrows & Structural Accents */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-bronze);
+  margin-bottom: 0.65rem;
+}
+
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 1.5px;
+  background-color: var(--accent-bronze);
+}
+
+/* Layout Utilities */
+.site-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section-wrapper {
+  padding-top: clamp(4rem, 8vw, 7.5rem);
+  padding-bottom: clamp(4rem, 8vw, 7.5rem);
+  position: relative;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  border-bottom: 1px solid var(--border-hairline);
+  padding-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 0.95;
+}
+
+.section-action-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.section-action-link:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-bronze);
+}
+
+/* Button Base Styles (Strictly sharp 0px/2px corner radius, no pill shapes) */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: var(--accent-rust);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-rust-hover);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  background-color: var(--accent-rust-active);
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-hairline);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text-primary);
+  background-color: var(--bg-surface);
+}
+
+/* Badge styling */
+.spec-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-none);
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

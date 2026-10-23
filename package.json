@@ -1,0 +1,12 @@
+{
+  "name": "tyche-streetwear",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "stripe": "^17.7.0"
+  }
+}
